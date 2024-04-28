@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<script>
+   
+     async function intrestcal(){
+
+        const a = document.getElementById("principal").value;
+     const b = document.getElementById("rate").value;
+     const c = document.getElementById("time").value;
+         
+        const response = await fetch("https://sum-server.100xdevs.com/interest?principal="+a+ "&rate=" + b +"&time=" + c);
+
+        const ans = await response.json();
+
+        var finans = JSON.stringify(ans);
+
+        document.getElementById("finalsum").innerHTML = "<pre>" + finans + "</pre>";
+     }
+
+
+</script>
+<body>
+    
+    <input id = "principal" type = "text" placeholder="Enter your  amount"> <br></br>
+    <input id = "rate" type = "text" placeholder="Enter your rate amount"> <br></br>
+    <input id = "time" type = "text" placeholder="Enter your tenure"> <br></br>
+
+    <button onclick=" intrestcal()">calculate</button> <br></br>
+
+    <div id = "finalsum"></div>
+</body>
+</html>
